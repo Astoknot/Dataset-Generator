@@ -60,7 +60,7 @@ public class Dataset {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public Dataset() {
        DB db = new DB();
        HeaderGenerator h = new HeaderGenerator();
        PacketGenerator p = new PacketGenerator();
@@ -177,10 +177,12 @@ public class Dataset {
         protocol="ARP";
         textblob=null;
         try{
-        ipsrc = InetAddress.getLocalHost().toString();
-        NetworkInterface network = NetworkInterface.getByInetAddress(InetAddress.getLocalHost());
-        byte[] mac = network.getHardwareAddress();
-        src = mac.toString();
+            ipsrc = InetAddress.getLocalHost().toString();
+            NetworkInterface network = NetworkInterface.getByName("wlp3s0");
+            //System.out.println(network);
+            byte[] mac = network.getHardwareAddress();
+            src = mac.toString();
+            //System.out.println("aaaaaaaaaaa"+src);
         }catch(Exception e){e.printStackTrace();}
         
         

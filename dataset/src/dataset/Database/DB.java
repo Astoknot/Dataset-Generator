@@ -56,7 +56,33 @@ public class DB {
         }
     }
     
-    
+    public void insertMeta(String startTime, String endTime, long duration) {
+        try {
+            // create a mysql database connection
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/soe", "root", "lekhika");
+
+            // the mysql insert statement
+            String query = " insert into meta(start_time,end_time,duration)"
+                    + " values (?, ?, ?)";
+
+            // create the mysql insert preparedstatement
+            PreparedStatement preparedStmt = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+
+            preparedStmt.setString(1, startTime);
+            preparedStmt.setString(2, endTime);
+            preparedStmt.setLong(3, duration);
+            
+
+            // execute the preparedstatement
+            preparedStmt.execute();
+
+            conn.close();
+        } catch (Exception e) {
+            System.err.println("Got an exception!!!");
+            System.err.println(e.getMessage());
+        }
+    }
     
      
     

@@ -32,15 +32,19 @@ public class OpFrame extends JFrame {
     private String information = "";
     private ArrayList<String> tables;
     private int prefColSize[] = new int[8];
+    boolean flag = true;
 
-    JLabel nPackets = new JLabel();
+//    JLabel nPackets = new JLabel();
     JLabel info = new JLabel();
 
     OpFrame(String query, ArrayList<String> tables1) {
         this.query = query;
         this.tables = tables1;
-        tables.add(query);
-        System.out.println("size" + tables.size());
+////        System.out.println("size" + tables.size());
+//        
+//        for (int i = 0; i < tables.size(); i++) {
+//            System.out.println("Queries "+tables.get(i));
+//        }
 
         extractClauses();
 
@@ -59,7 +63,7 @@ public class OpFrame extends JFrame {
         }
         //--------------------------------------------------------
         heading.setBounds(480, 10, 60, 30);
-        sp.setBounds(10, 50, 990, 500);
+        sp.setBounds(10, 50, 1300, 500);
 
         DefaultTableModel dtm = new DefaultTableModel();
         for (int i = 0; i < 8; i++) {
@@ -87,7 +91,7 @@ public class OpFrame extends JFrame {
             while (rs1.next()) {
                 information = "Number of " + rs1.getString(1) + "   :  " + rs1.getString(2) + "\n";
                 l1.add(information);
-                System.out.println("info:" + information);
+//                System.out.println("info:" + information);
             }
 
             s.close();
@@ -108,7 +112,7 @@ public class OpFrame extends JFrame {
             }
         });
 
-        if (tables.indexOf(dtm) == 0) {
+        if (tables.indexOf(query) == 0) {
             back.setEnabled(false);
         }
         back.setBounds(150, 10, 60, 30);
@@ -117,11 +121,11 @@ public class OpFrame extends JFrame {
                 refresh1(true);
             }
         });
-        if (tables.indexOf(dtm) < (tables.size() - 1)) {
+        if (tables.indexOf(query) == (tables.size() - 1)) {
             next.setEnabled(false);
         }
         next.setBounds(700, 10, 60, 30);
-        back.addActionListener(new java.awt.event.ActionListener() {
+        next.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 refresh1(false);
             }
@@ -136,7 +140,10 @@ public class OpFrame extends JFrame {
                 int[] row = jTable.getSelectedRows();
                 int[] columns = jTable.getSelectedColumns();
                 Data = jTable.getValueAt(row[0], columns[0]).toString();
-                refresh(Data, columns[0]);
+                if (flag) {
+                    refresh(Data, columns[0]);
+                    flag = false;
+                }
             }
         });
         l1.setBounds(10, 580, 600, 110);
@@ -145,16 +152,15 @@ public class OpFrame extends JFrame {
 //        nPackets.setBounds(10,600,170,10);
 //        info.setText(information);
 //        info.setBounds(10,610,200,30);
-
         TableColumnModel columnModel = jTable.getColumnModel();
-        columnModel.getColumn(0).setPreferredWidth(7);
-        columnModel.getColumn(1).setPreferredWidth(120);
-        columnModel.getColumn(2).setPreferredWidth(80);
-        columnModel.getColumn(3).setPreferredWidth(80);
+        columnModel.getColumn(0).setPreferredWidth(5);
+        columnModel.getColumn(1).setPreferredWidth(100);
+        columnModel.getColumn(2).setPreferredWidth(70);
+        columnModel.getColumn(3).setPreferredWidth(70);
+        columnModel.getColumn(4).setPreferredWidth(60);
+        columnModel.getColumn(5).setPreferredWidth(60);
         columnModel.getColumn(6).setPreferredWidth(10);
-
-
-
+        columnModel.getColumn(7).setPreferredWidth(200);
 
 //        jTable.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 //        jTable.getColumnModel().getColumn(0).setPreferredWidth(27);
@@ -166,18 +172,18 @@ public class OpFrame extends JFrame {
 //        jTable.getColumnModel().getColumn(7).setPreferredWidth(100);
 //        jTable.getColumnModel().getColumn(8).setPreferredWidth(95);
 //        jTable.setAutoResizeMode(JTable.AUTO_RESIZE_LAST_COLUMN);
-////        jTable.getColumnModel().getColumn(9).setPreferredWidth(40);
-////        jTable.getColumnModel().getColumn(10).setPreferredWidth(400);
+//        jTable.getColumnModel().getColumn(9).setPreferredWidth(40);
+//        jTable.getColumnModel().getColumn(10).setPreferredWidth(400);
         this.add(heading);
         this.add(sp);
-        this.add(nPackets);
+//        this.add(nPackets);
         this.add(info);
         this.add(filter);
         this.add(back);
         this.add(next);
         this.add(l1);
 
-        this.setSize(1000, 1000);
+        this.setSize(1300, 1000);
         this.setLayout(null);
         this.setVisible(true);
     }
@@ -209,12 +215,17 @@ public class OpFrame extends JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new OpFrame("select * from packets", new ArrayList<String>()).setVisible(true);
+                ArrayList<String> str = new ArrayList<String>();
+                str.add("select * from packets");
+                new OpFrame("select * from packets", str).setVisible(true);
             }
         });
     }
 
     private void refresh(String Data, int x) {
+        for (int i = tables.indexOf(query) + 1; i < tables.size(); i++) {
+            tables.remove(i--);
+        }
         int endIndex;
         if (gIndex != -1) {
             endIndex = gIndex;
@@ -233,10 +244,8 @@ public class OpFrame extends JFrame {
                         + " where " + getColumnName(x, true) + " = '" + Data
                         + "' " + query.substring(endIndex);
             }
-            System.out.println("new query " + query);
-            for (int i = tables.indexOf(query) + 1; i < tables.size(); i++) {
-                tables.remove(i);
-            }
+
+            tables.add(query);
             this.dispatchEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));
             new OpFrame(query, tables);
         }
@@ -261,16 +270,16 @@ public class OpFrame extends JFrame {
                 return "timestamp";
             }
             if (x == 2) {
-                return "src";
+                return "eth_src";
             }
             if (x == 3) {
-                return "dest";
+                return "eth_dest";
             }
             if (x == 4) {
-                return "src_ip";
+                return "ip_src";
             }
             if (x == 5) {
-                return "dest_ip";
+                return "ip_dest";
             }
             if (x == 6) {
                 return "protocol";
@@ -300,7 +309,7 @@ public class OpFrame extends JFrame {
             if (x == 6) {
                 return "Protocol";
             }
-            if (x == 8) {
+            if (x == 7) {
                 return "Information";
             }
         }

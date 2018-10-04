@@ -5,6 +5,8 @@
  */
 package GUI;
 
+import dataset.Database.DB;
+import dataset.Dataset;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JSpinner;
@@ -12,6 +14,10 @@ import javax.swing.SpinnerListModel;
 import javax.swing.SpinnerModel;
 import javax.swing.*;
  import java.awt.Checkbox;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.concurrent.TimeUnit;
 
 /**
  *
@@ -320,6 +326,7 @@ public class IpFrame extends javax.swing.JFrame{
         int hrs = (Integer) hhSpinner.getValue();
         int mins = (Integer) mmSpinner.getValue();
         int secs = (Integer) ssSpinner.getValue();
+        long interval = secs + (mins * 60) + (hrs * 60 * 60);
 
         boolean arpval = arpC.isSelected();
         boolean ipval = ipC.isSelected();
@@ -328,45 +335,63 @@ public class IpFrame extends javax.swing.JFrame{
         boolean icmpval = icmpC.isSelected();
         boolean ipoval = ipoC.isSelected();
         boolean othersval = othersC.isSelected();
-        
-        //Dataset D = new Dataset();
-        
 
         String query = "select * from packets where protocol in(";
-        if(!arpval && !ipval && !othersval){
+        if (!arpval && !ipval && !othersval) {
             JOptionPane.showMessageDialog(this,
                     "Please select one or more protocols!",
                     "No Protocol Selected",
                     JOptionPane.WARNING_MESSAGE);
-        }
-        else{
-            if(arpval){
+        } else {
+            //Find start,end time + Insert to packets
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            Calendar calendar = Calendar.getInstance();
+            String stime = sdf.format(calendar.getTime());
+
+            for (long stop = System.nanoTime() + TimeUnit.SECONDS.toNanos(interval); stop > System.nanoTime();) {
+                Dataset dset = new Dataset();
+            }
+
+            calendar = Calendar.getInstance();
+            String etime = sdf.format(calendar.getTime());
+
+            //Insert to meta
+            DB db = new DB();
+            db.insertMeta(stime, etime, interval);
+
+            //Run query
+            if (arpval) {
                 query = query + "'ARP',";
             }
-            if(othersval){
+            if (othersval) {
                 query = query + "'--',";
             }
 
-            if(ipval){
-                if(!ipoval && !udpval && !tcpval && !icmpval) {
-                    query = query+"'TCP','ICMP','UDP','',";
-                }
-                else{
-                    System.out.println(udpval);
-                    if(udpval)
-                        query = query+"'UDP',";
-                    if(tcpval)
-                        query = query+"'TCP',";
-                    if(icmpval)
-                        query = query+"'ICMP',";
-                    if(ipoval)
-                        query = query+"'',";        
+            if (ipval) {
+                if (!ipoval && !udpval && !tcpval && !icmpval) {
+                    query = query + "'TCP','ICMP','UDP','',";
+                } else {
+                    if (udpval) {
+                        query = query + "'UDP',";
+                    }
+                    if (tcpval) {
+                        query = query + "'TCP',";
+                    }
+                    if (icmpval) {
+                        query = query + "'ICMP',";
+                    }
+                    if (ipoval) {
+                        query = query + "'',";
+                    }
                 }
             }
-            query = query.substring(0,query.length()-1)+");";
+            query = query.substring(0, query.length() - 1)
+                    + ") and timestamp between '" + stime + "' and '" + etime + "'";
 
             System.out.println(query);
-            OpFrame O = new OpFrame(query);
+            ArrayList<String> str = new ArrayList<String>();
+            str.add(query);
+            OpFrame O = new OpFrame(query,str); //<<<<<<<UNCOMMENT THIS
         }
     }//GEN-LAST:event_okBtnActionPerformed
     
