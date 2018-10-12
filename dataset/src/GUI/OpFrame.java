@@ -105,10 +105,10 @@ public class OpFrame extends JFrame {
         }
 
         // Buttons
-        filter.setBounds(750, 810, 100, 30);
+        filter.setBounds(900, 600, 100, 30);
         filter.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                // to do
+                filterf(true);
             }
         });
 
@@ -261,6 +261,13 @@ public class OpFrame extends JFrame {
         new OpFrame(query, tables);
     }
 
+    private void filterf(boolean b){
+        if(b){
+            this.setVisible(false);
+        FilterFrame f = new FilterFrame();
+        }
+    }
+    
     private String getColumnName(int x, boolean isQuery) {
         if (isQuery) {
             if (x == 0) {
