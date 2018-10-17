@@ -52,12 +52,12 @@ public class FilterFrame extends javax.swing.JFrame {
         ipothers = new javax.swing.JCheckBox();
         others = new javax.swing.JCheckBox();
         jPanel3 = new javax.swing.JPanel();
-        macsrc = new javax.swing.JCheckBox();
-        macdest = new javax.swing.JCheckBox();
+        macdest = new javax.swing.JTextField();
+        macsrc = new javax.swing.JTextField();
         filterbtn = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
-        ipsrc = new javax.swing.JCheckBox();
-        ipdest = new javax.swing.JCheckBox();
+        ipsrc = new javax.swing.JTextField();
+        ipdest = new javax.swing.JTextField();
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -160,12 +160,17 @@ public class FilterFrame extends javax.swing.JFrame {
         jPanel3.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED), javax.swing.BorderFactory.createTitledBorder(null, "Mac Address", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 0, 12), new java.awt.Color(89, 89, 89)))); // NOI18N
         jPanel3.setForeground(new java.awt.Color(160, 153, 153));
 
-        macsrc.setText("Source");
-
         macdest.setText("Destination");
         macdest.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 macdestActionPerformed(evt);
+            }
+        });
+
+        macsrc.setText("Source ");
+        macsrc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                macsrcActionPerformed(evt);
             }
         });
 
@@ -176,18 +181,18 @@ public class FilterFrame extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(macdest)
+                    .addComponent(macdest, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
                     .addComponent(macsrc))
-                .addContainerGap(36, Short.MAX_VALUE))
+                .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addComponent(macsrc)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(macdest)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(macsrc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
+                .addComponent(macdest, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         filterbtn.setText("Filter");
@@ -207,6 +212,11 @@ public class FilterFrame extends javax.swing.JFrame {
         });
 
         ipdest.setText("Destination");
+        ipdest.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ipdestActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -217,16 +227,16 @@ public class FilterFrame extends javax.swing.JFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(ipsrc)
                     .addComponent(ipdest))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addComponent(ipsrc)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(ipdest)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(ipsrc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
+                .addComponent(ipdest, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -254,9 +264,9 @@ public class FilterFrame extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(filterbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 9, Short.MAX_VALUE)))
@@ -265,10 +275,6 @@ public class FilterFrame extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void macdestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_macdestActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_macdestActionPerformed
 
     private void ipActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ipActionPerformed
         // TODO add your handling code here:
@@ -298,10 +304,6 @@ public class FilterFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_arpActionPerformed
 
-    private void ipsrcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ipsrcActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ipsrcActionPerformed
-
     private void filterbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filterbtnActionPerformed
         // TODO add your handling code here:
         boolean arpval = arp.isSelected();
@@ -311,14 +313,39 @@ public class FilterFrame extends javax.swing.JFrame {
         boolean icmpval = icmp.isSelected();
         boolean ipoval = ipothers.isSelected();
         boolean othersval = others.isSelected();
-        boolean ipsrcval = ipsrc.isSelected();
-        boolean ipdestval = ipdest.isSelected();
-        boolean macsrcval = macsrc.isSelected();
-        boolean macdestval = macdest.isSelected();
-
+        String srcmac = macsrc.getText();
+        String destmac = macdest.getText();
+        String srcip = ipsrc.getText();
+        String destip = ipdest.getText();
+        
+        
+        if(!arpval && ipval && !othersval && srcmac != null && destmac != null && srcip != null && destip != null){
+            
+        if(srcmac != null && destmac != null && srcip != null && destip != null){
+            
+        if(srcmac != null ){
+            String query = "select * from packets where Src MAC Addr = '"+ srcmac + "'";
+        }
+        else if(destmac != null){
+             String query = "select * from packets where Dest MAC Addr = '"+ destmac + "'";
+        }
+        else if(srcip != null){
+             String query = "select * from packets where Src IP = '"+ srcip + "'";
+        }
+        else if(destip != null){
+             String query = "select * from packets where Dest IP = '"+ destip + "'";
+        }
+        else{
+            JOptionPane.showMessageDialog(this,
+                    "Please select one or more options!",
+                    "No option selected",
+                    JOptionPane.WARNING_MESSAGE);
+        }
+        }
+        else{
         String query = "select * from packets where protocol in(";
         
-        if (!arpval && !ipval && !othersval && !macsrcval && !macdestval && !ipsrcval && !ipdestval) {
+        if (!arpval && !ipval && !othersval ) {
             JOptionPane.showMessageDialog(this,
                     "Please select one or more options!",
                     "No option selected",
@@ -357,7 +384,25 @@ public class FilterFrame extends javax.swing.JFrame {
             OpFrame O = new OpFrame(query,str); 
             
         }
+        }
+        }
     }//GEN-LAST:event_filterbtnActionPerformed
+
+    private void macsrcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_macsrcActionPerformed
+      
+    }//GEN-LAST:event_macsrcActionPerformed
+
+    private void macdestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_macdestActionPerformed
+//        macdest.setText(null); 
+    }//GEN-LAST:event_macdestActionPerformed
+
+    private void ipsrcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ipsrcActionPerformed
+//        ipsrc.setText(null); 
+    }//GEN-LAST:event_ipsrcActionPerformed
+
+    private void ipdestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ipdestActionPerformed
+//        ipdest.setText(null); 
+    }//GEN-LAST:event_ipdestActionPerformed
 
     /**
      * @param args the command line arguments
@@ -399,15 +444,15 @@ public class FilterFrame extends javax.swing.JFrame {
     private javax.swing.JButton filterbtn;
     private javax.swing.JCheckBox icmp;
     private javax.swing.JCheckBox ip;
-    private javax.swing.JCheckBox ipdest;
+    private javax.swing.JTextField ipdest;
     private javax.swing.JCheckBox ipothers;
-    private javax.swing.JCheckBox ipsrc;
+    private javax.swing.JTextField ipsrc;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JCheckBox macdest;
-    private javax.swing.JCheckBox macsrc;
+    private javax.swing.JTextField macdest;
+    private javax.swing.JTextField macsrc;
     private javax.swing.JCheckBox others;
     private javax.swing.JCheckBox tcp;
     private javax.swing.JCheckBox udp;

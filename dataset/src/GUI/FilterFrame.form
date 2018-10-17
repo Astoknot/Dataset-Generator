@@ -67,9 +67,9 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jPanel1" max="32767" attributes="0"/>
                   <Group type="102" attributes="0">
-                      <Component id="jPanel4" min="-2" pref="115" max="-2" attributes="0"/>
+                      <Component id="jPanel4" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jPanel3" min="-2" pref="114" max="-2" attributes="0"/>
+                      <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="filterbtn" min="-2" pref="39" max="-2" attributes="0"/>
                       <EmptySpace min="0" pref="9" max="32767" attributes="0"/>
@@ -238,37 +238,40 @@
               <Group type="102" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="macdest" min="-2" max="-2" attributes="0"/>
-                      <Component id="macsrc" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="macdest" alignment="0" pref="130" max="32767" attributes="0"/>
+                      <Component id="macsrc" alignment="0" max="32767" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="36" max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+              <Group type="102" alignment="1" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
                   <Component id="macsrc" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <EmptySpace pref="9" max="32767" attributes="0"/>
                   <Component id="macdest" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JCheckBox" name="macsrc">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Source"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JCheckBox" name="macdest">
+        <Component class="javax.swing.JTextField" name="macdest">
           <Properties>
             <Property name="text" type="java.lang.String" value="Destination"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="macdestActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JTextField" name="macsrc">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Source "/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="macsrcActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>
@@ -305,27 +308,27 @@
               <Group type="102" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="ipsrc" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="ipdest" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="ipsrc" max="32767" attributes="0"/>
+                      <Component id="ipdest" alignment="0" max="32767" attributes="0"/>
                   </Group>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
                   <Component id="ipsrc" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <EmptySpace pref="10" max="32767" attributes="0"/>
                   <Component id="ipdest" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JCheckBox" name="ipsrc">
+        <Component class="javax.swing.JTextField" name="ipsrc">
           <Properties>
             <Property name="text" type="java.lang.String" value="Source"/>
           </Properties>
@@ -333,10 +336,13 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ipsrcActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JCheckBox" name="ipdest">
+        <Component class="javax.swing.JTextField" name="ipdest">
           <Properties>
             <Property name="text" type="java.lang.String" value="Destination"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ipdestActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
