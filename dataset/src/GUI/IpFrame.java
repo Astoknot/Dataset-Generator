@@ -391,7 +391,9 @@ public class IpFrame extends javax.swing.JFrame{
             System.out.println(query);
             ArrayList<String> str = new ArrayList<String>();
             str.add(query);
-            OpFrame O = new OpFrame(query,str); //<<<<<<<UNCOMMENT THIS
+            OpFrame O = new OpFrame(query,str);
+            this.setVisible(false);
+//<<<<<<<UNCOMMENT THIS
         }
     }//GEN-LAST:event_okBtnActionPerformed
     

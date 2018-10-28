@@ -105,7 +105,7 @@ public class OpFrame extends JFrame {
         }
 
         // Buttons
-        filter.setBounds(900, 600, 100, 30);
+        filter.setBounds(900, 10, 80, 30);
         filter.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 filterf(true);
@@ -115,7 +115,7 @@ public class OpFrame extends JFrame {
         if (tables.indexOf(query) == 0) {
             back.setEnabled(false);
         }
-        back.setBounds(150, 10, 60, 30);
+        back.setBounds(150, 10, 80, 30);
         back.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 refresh1(true);
@@ -124,7 +124,7 @@ public class OpFrame extends JFrame {
         if (tables.indexOf(query) == (tables.size() - 1)) {
             next.setEnabled(false);
         }
-        next.setBounds(700, 10, 60, 30);
+        next.setBounds(700, 10, 80, 30);
         next.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 refresh1(false);
@@ -146,7 +146,7 @@ public class OpFrame extends JFrame {
                 }
             }
         });
-        l1.setBounds(10, 580, 600, 110);
+        l1.setBounds(10, 580, 1280, 110);
         l1.add("Total Packets: " + numberOfPackets);
 //        nPackets.setText("Total Packets: "+numberOfPackets);
 //        nPackets.setBounds(10,600,170,10);
@@ -263,8 +263,9 @@ public class OpFrame extends JFrame {
 
     private void filterf(boolean b){
         if(b){
-            this.setVisible(false);
+        this.setVisible(false);
         FilterFrame f = new FilterFrame();
+        f.setVisible(true);
         }
     }
     

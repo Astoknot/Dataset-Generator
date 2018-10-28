@@ -278,13 +278,12 @@ public class FilterFrame extends javax.swing.JFrame {
 
     private void ipActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ipActionPerformed
         // TODO add your handling code here:
-         if(ip.isSelected()){
+        if (ip.isSelected()) {
             udp.setEnabled(true);
             tcp.setEnabled(true);
             icmp.setEnabled(true);
-            ipothers.setEnabled(true);        
-        }
-         else{
+            ipothers.setEnabled(true);
+        } else {
             udp.setEnabled(false);
             tcp.setEnabled(false);
             icmp.setEnabled(false);
@@ -315,81 +314,93 @@ public class FilterFrame extends javax.swing.JFrame {
         boolean othersval = others.isSelected();
         String srcmac = macsrc.getText();
         String destmac = macdest.getText();
-        String srcip = ipsrc.getText();
-        String destip = ipdest.getText();
-        
-        
-        if(!arpval && ipval && !othersval && srcmac != null && destmac != null && srcip != null && destip != null){
-            
-        if(srcmac != null && destmac != null && srcip != null && destip != null){
-            
-        if(srcmac != null ){
-            String query = "select * from packets where Src MAC Addr = '"+ srcmac + "'";
-        }
-        else if(destmac != null){
-             String query = "select * from packets where Dest MAC Addr = '"+ destmac + "'";
-        }
-        else if(srcip != null){
-             String query = "select * from packets where Src IP = '"+ srcip + "'";
-        }
-        else if(destip != null){
-             String query = "select * from packets where Dest IP = '"+ destip + "'";
-        }
-        else{
-            JOptionPane.showMessageDialog(this,
-                    "Please select one or more options!",
-                    "No option selected",
-                    JOptionPane.WARNING_MESSAGE);
-        }
-        }
-        else{
-        String query = "select * from packets where protocol in(";
-        
-        if (!arpval && !ipval && !othersval ) {
-            JOptionPane.showMessageDialog(this,
-                    "Please select one or more options!",
-                    "No option selected",
-                    JOptionPane.WARNING_MESSAGE);
-        } else{
-            if (arpval) {
-                query = query + "'ARP',";
-            }
-            if (othersval) {
-                query = query + "'--',";
-            }
+        String srcip = ipsrc.getText().toString();
+        String destip = ipdest.getText().toString();
+        String query = "";
 
-            if (ipval) {
-                if (!ipoval && !udpval && !tcpval && !icmpval) {
-                    query = query + "'TCP','ICMP','UDP','',";
+        if (srcmac.equals("Source ")) {
+            srcmac = "";
+        }
+        if (destmac.equals("Destination")) {
+            destmac = "";
+        }
+        if (srcip.equals("Source")) {
+            srcip = "";
+        }
+        if (destip.equals("Destination")) {
+            destip = "";
+        }
+
+        if (!arpval || ipval || !othersval || srcmac != "" || destmac != "" || srcip != "" || destip != "") {
+
+//            
+            if (!srcmac.equals("")) {
+                query = "select * from packets where eth_src = '" + srcmac + "'";
+            }
+            if (!destmac.equals("")) {
+                if (query.equals("")) {
+                    query = "select * from packets where eth_dest = '" + destmac + "'";
                 } else {
-                    if (udpval) {
-                        query = query + "'UDP',";
-                    }
-                    if (tcpval) {
-                        query = query + "'TCP',";
-                    }
-                    if (icmpval) {
-                        query = query + "'ICMP',";
-                    }
-                    if (ipoval) {
-                        query = query + "'',";
-                    }
+                    query += " and eth_dest = '" + destmac + "'";
                 }
             }
-            query = query.substring(0, query.length() - 1) + ")";
+            if (!srcip.equals("")) {
+                if (query.equals("")) {
+                    query = "select * from packets where ip_src = '" + srcip + "'";
+                } else {
+                    query += " and ip_src = '" + srcip + "'";
+                }
+            }
+            if (!destip.equals("")) {
+                if (query.equals("")) {
+                    query = "select * from packets where ip_dest = '" + destip + "'";
+                } else {
+                    query += " and ip_dest = '" + destip + "'";
+                }
+            }
+            if (arpval || othersval || ipval) {
+                if (query.equals("")) {
+                    query = "select * from packets where protocol in (";
+                } else {
+                    query += " and protocol in (";
+                }
+                if (arpval) {
+                    query = query + "'ARP',";
+                }
+                if (othersval) {
+                    query = query + "'--',";
+                }
 
+                if (ipval) {
+                    if (!ipoval && !udpval && !tcpval && !icmpval) {
+                        query = query + "'TCP','ICMP','UDP','',";
+                    } else {
+                        if (udpval) {
+                            query = query + "'UDP',";
+                        }
+                        if (tcpval) {
+                            query = query + "'TCP',";
+                        }
+                        if (icmpval) {
+                            query = query + "'ICMP',";
+                        }
+                        if (ipoval) {
+                            query = query + "'',";
+                        }
+                    }
+                    query = query.substring(0, query.length() - 1) + ")";
+                }
+            }
             System.out.println(query);
             ArrayList<String> str = new ArrayList<String>();
             str.add(query);
-            OpFrame O = new OpFrame(query,str); 
-            
+            OpFrame O = new OpFrame(query, str);
         }
-        }
-        }
+
     }//GEN-LAST:event_filterbtnActionPerformed
 
     private void macsrcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_macsrcActionPerformed
-      
+
     }//GEN-LAST:event_macsrcActionPerformed
 
     private void macdestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_macdestActionPerformed
@@ -418,16 +429,24 @@ public class FilterFrame extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
+
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FilterFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FilterFrame.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FilterFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FilterFrame.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FilterFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FilterFrame.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FilterFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FilterFrame.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
