@@ -348,8 +348,10 @@ public class IpFrame extends javax.swing.JFrame{
             Calendar calendar = Calendar.getInstance();
             String stime = sdf.format(calendar.getTime());
 
+            int counter=0;
             for (long stop = System.nanoTime() + TimeUnit.SECONDS.toNanos(interval); stop > System.nanoTime();) {
-                Dataset dset = new Dataset();
+                counter++;
+                Dataset dset = new Dataset(counter);
             }
 
             calendar = Calendar.getInstance();

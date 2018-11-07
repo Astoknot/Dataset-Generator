@@ -1,0 +1,18 @@
+S.No.: 1||Timestamp: 2018-10-31 14:11:04||MAC Src Addr: e0:f7:a7:b0:5f:3f||MAC Dest Addr: c4:9a:35:5c:04:8d||IP Src Addr: 224.247.167.176||IP Dest Addr: 95.63.196.154||Protocol: TCP||Details: src port:57591,dest port:42928,seq:1598014618,csum:20,ack:895222925,window size:17666
+
+S.No.: 2||Timestamp: 2018-10-31 14:11:04||MAC Src Addr: a0:cc:a2:19:06:5e||MAC Dest Addr: 25:21:e9:17:1c:16||IP Src Addr: 160.204.162.25||IP Dest Addr: 6.94.37.33||Protocol: TCP||Details: src port:41164,dest port:41497,seq:106833185,csum:20,ack:3910605846,window size:17666
+
+S.No.: 3||Timestamp: 2018-10-31 14:11:04||MAC Src Addr: 01:bf:41:30:46:96||MAC Dest Addr: 3b:d5:e0:f0:f6:1d||IP Src Addr: 1.191.65.48||IP Dest Addr: 70.150.59.213||Protocol: TCP||Details: src port:447,dest port:16688,seq:1184250837,csum:20,ack:3773888029,window size:17666
+
+S.No.: 4||Timestamp: 2018-10-31 14:11:04||MAC Src Addr: 0f:b9:a5:aa:0f:38||MAC Dest Addr: 14:07:f9:61:9b:80||IP Src Addr: 15.185.165.170||IP Dest Addr: 15.56.20.7||Protocol: TCP||Details: src port:4025,dest port:42410,seq:255333383,csum:20,ack:4183923584,window size:17666
+
+S.No.: 5||Timestamp: 2018-10-31 14:11:04||MAC Src Addr: 85:d5:d2:5e:4b:bb||MAC Dest Addr: 26:9d:95:7e:0e:98||IP Src Addr: 133.213.210.94||IP Dest Addr: 75.187.38.157||Protocol: TCP||Details: src port:34261,dest port:53854,seq:1270556317,csum:20,ack:2508066456,window size:17666
+
+S.No.: 6||Timestamp: 2018-10-31 14:11:04||MAC Src Addr: fb:5a:d0:12:0f:66||MAC Dest Addr: 32:b1:c5:12:06:33||IP Src Addr: 251.90.208.18||IP Dest Addr: 15.102.50.177||Protocol: TCP||Details: src port:64346,dest port:53266,seq:258355889,csum:20,ack:3306292787,window size:17666
+
+S.No.: 7||Timestamp: 2018-10-31 14:11:04||MAC Src Addr: b6:e2:1b:51:8a:b8||MAC Dest Addr: 4a:42:63:06:53:88||IP Src Addr: 182.226.27.81||IP Dest Addr: 138.184.74.66||Protocol: TCP||Details: src port:46818,dest port:6993,seq:2327333442,csum:20,ack:1661358984,window size:17666
+
+S.No.: 8||Timestamp: 2018-10-31 14:11:05||MAC Src Addr: 79:77:29:10:b5:23||MAC Dest Addr: 5f:3b:d3:e6:2e:7c||IP Src Addr: 121.119.41.16||IP Dest Addr: 181.35.95.59||Protocol: --||Details: null
+
+S.No.: 9||Timestamp: 2018-10-31 14:11:05||MAC Src Addr: 4a:c4:60:af:24:7c||MAC Dest Addr: f6:9d:f0:37:1b:1f||IP Src Addr: 74.196.96.175||IP Dest Addr: 36.124.246.157||Protocol: TCP||Details: src port:19140,dest port:24751,seq:612169373,csum:20,ack:4030143263,window size:17666
+

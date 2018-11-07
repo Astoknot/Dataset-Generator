@@ -57,10 +57,13 @@ import net.sourceforge.jpcap.util.*;
  */
 public class Dataset {
 
+    
+    int counter; 
     /**
      * @param args the command line arguments
      */
-    public Dataset() {
+    public Dataset(int counter) {
+       this.counter=counter;
        DB db = new DB();
        HeaderGenerator h = new HeaderGenerator();
        PacketGenerator p = new PacketGenerator();
@@ -207,7 +210,7 @@ public class Dataset {
 //      
 //      System.out.println("ARP");
 
-     db.insert(src, des, ipsrc, ipdest, protocol, textblob);
+     db.insert(counter,src, des, ipsrc, ipdest, protocol, textblob);
        
     }
     

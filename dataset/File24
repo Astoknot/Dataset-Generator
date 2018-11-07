@@ -1,0 +1,20 @@
+S.No.: 1 || Timestamp: 2018-10-31 14:12:10 || MAC Src Addr: 4c:4a:12:11:7c:b9 || MAC Dest Addr: 14:1d:2b:7e:1b:6f || IP Src Addr: 76.74.18.17 || IP Dest Addr: 124.185.20.29 || Protocol: -- || Details: null
+
+S.No.: 2 || Timestamp: 2018-10-31 14:12:10 || MAC Src Addr: 1e:7d:8b:ed:27:37 || MAC Dest Addr: 4e:4a:69:f9:35:ef || IP Src Addr: 30.125.139.237 || IP Dest Addr: 39.55.78.74 || Protocol: TCP || Details: src port:7805,dest port:35821,seq:657935946,csum:20,ack:1777939951,window size:17666
+
+S.No.: 3 || Timestamp: 2018-10-31 14:12:10 || MAC Src Addr: 27:74:f6:10:99:f1 || MAC Dest Addr: 72:81:53:16:00:e9 || IP Src Addr: 39.116.246.16 || IP Dest Addr: 153.241.114.129 || Protocol: -- || Details: null
+
+S.No.: 4 || Timestamp: 2018-10-31 14:12:10 || MAC Src Addr: 0a:a2:68:94:93:16 || MAC Dest Addr: eb:14:c5:9b:ca:e5 || IP Src Addr: 10.162.104.148 || IP Dest Addr: 147.22.235.20 || Protocol: -- || Details: null
+
+S.No.: 5 || Timestamp: 2018-10-31 14:12:10 || MAC Src Addr: 97:c6:05:2f:6c:67 || MAC Dest Addr: 6a:b3:dd:1b:ef:dc || IP Src Addr: 151.198.5.47 || IP Dest Addr: 108.103.106.179 || Protocol: TCP || Details: src port:38854,dest port:1327,seq:1818716851,csum:20,ack:3709595612,window size:17666
+
+S.No.: 6 || Timestamp: 2018-10-31 14:12:10 || MAC Src Addr: 90:76:c3:4f:bf:73 || MAC Dest Addr: 18:68:99:f5:85:ab || IP Src Addr: 144.118.195.79 || IP Dest Addr: 191.115.24.104 || Protocol: -- || Details: null
+
+S.No.: 7 || Timestamp: 2018-10-31 14:12:10 || MAC Src Addr: c0:7b:b7:8b:22:a0 || MAC Dest Addr: fd:b6:d0:53:88:c7 || IP Src Addr: 192.123.183.139 || IP Dest Addr: 34.160.253.182 || Protocol: TCP || Details: src port:49275,dest port:46987,seq:580976054,csum:20,ack:3495135431,window size:17666
+
+S.No.: 8 || Timestamp: 2018-10-31 14:12:10 || MAC Src Addr: 2f:6b:e9:b0:c2:e4 || MAC Dest Addr: ed:c1:1a:2c:90:22 || IP Src Addr: 47.107.233.176 || IP Dest Addr: 194.228.237.193 || Protocol: TCP || Details: src port:12139,dest port:59824,seq:3269782977,csum:20,ack:439128098,window size:17666
+
+S.No.: 9 || Timestamp: 2018-10-31 14:12:10 || MAC Src Addr: 7e:dd:3f:32:06:c2 || MAC Dest Addr: f1:a0:d3:96:df:8e || IP Src Addr: 126.221.63.50 || IP Dest Addr: 6.194.241.160 || Protocol: TCP || Details: src port:32477,dest port:16178,seq:113439136,csum:20,ack:3549880206,window size:17666
+
+S.No.: 10 || Timestamp: 2018-10-31 14:12:10 || MAC Src Addr: 40:cb:3a:27:a2:0d || MAC Dest Addr: bd:48:fb:43:12:1e || IP Src Addr: 64.203.58.39 || IP Dest Addr: 162.13.189.72 || Protocol: TCP || Details: src port:16587,dest port:14887,seq:2718809416,csum:20,ack:4215476766,window size:17666
+
